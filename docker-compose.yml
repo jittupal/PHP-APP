@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_HOST: php-db.ctg6skegio30.eu-north-1.rds.amazonaws.com
+      DB_USER: admin
+      DB_PASS: Jksuperpal91
+      DB_NAME: formdb
