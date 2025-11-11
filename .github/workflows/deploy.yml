@@ -32,7 +32,7 @@ jobs:
 
       # Step 5: Save Docker image as tar (for SCP)
       - name: Save Docker image
-        run: docker save php-app:latest -o php-app.tar
+        run: docker save php-app:latest -o $GITHUB_WORKSPACE/php-app.tar
 
       # Step 6: Copy files to EC2 using SCP
       - name: Copy Docker image to EC2
