@@ -8,12 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/jittupal/PHP-APP.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t php-app-web .'
