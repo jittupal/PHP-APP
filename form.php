@@ -7,10 +7,10 @@ https://github.com/fernandod1/
 
 // Configure your mysql database connection details:
 
-$mysqlserverhost = getenv('DB_HOST') ?: "php-db.ctg6skegio30.eu-north-1.rds.amazonaws.com";
-$database_name   = getenv('DB_NAME') ?: "formdb";
-$username_mysql  = getenv('DB_USER') ?: "admin";
-$password_mysql  = getenv('DB_PASS') ?: "Jksuperpal91";
+$mysqlserverhost = getenv('DB_HOST') ?: "";
+$database_name   = getenv('DB_NAME') ?: "";
+$username_mysql  = getenv('DB_USER') ?: "";
+$password_mysql  = getenv('DB_PASS') ?: "";
 
 // ------------------------- Do not modify code under this field -------------------------- //
 
