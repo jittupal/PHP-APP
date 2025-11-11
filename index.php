@@ -1,1 +1,4 @@
-<?php include 'form.php'; ?>
+<?php
+header("Location: form.php");
+exit();
+?>
