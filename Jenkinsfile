@@ -5,7 +5,7 @@ pipeline {
         ECR_REPO = '838693051190.dkr.ecr.eu-north-1.amazonaws.com/php-app-web'
         AWS_REGION = 'eu-north-1'
         EC2_IP = '51.21.1.243'
-        SSH_KEY = '$HOME/.ssh/php.pem'  // Private key to access EC2
+        SSH_KEY = "$HOME/.ssh/php.pem"  // Private key to access EC2
     }
 
     stages {
