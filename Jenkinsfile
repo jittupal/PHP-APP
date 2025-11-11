@@ -5,7 +5,6 @@ pipeline {
         ECR_REPO = '838693051190.dkr.ecr.eu-north-1.amazonaws.com/php-app-web'
         AWS_REGION = 'eu-north-1'
         EC2_IP = '51.21.1.243'
-        SSH_KEY = "$HOME/.ssh/php.pem"  // Private key to access EC2
     }
 
     stages {
@@ -36,13 +35,17 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sh """
-                ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ec2-user@${EC2_IP} \\
-                'docker pull ${ECR_REPO}:latest && \\
-                 docker stop php-app-web || true && \\
-                 docker rm php-app-web || true && \\
-                 docker run -d --name php-app-web -p 80:80 ${ECR_REPO}:latest'
-                """
+                // Use stored SSH credentials (no .pem file needed)
+                sshagent (credentials: ['ec2-ssh']) {
+                    sh """
+                    ssh -o StrictHostKeyChecking=no ec2-user@${EC2_IP} '
+                        docker pull ${ECR_REPO}:latest &&
+                        docker stop php-app-web || true &&
+                        docker rm php-app-web || true &&
+                        docker run -d --name php-app-web -p 80:80 ${ECR_REPO}:latest
+                    '
+                    """
+                }
             }
         }
     }
