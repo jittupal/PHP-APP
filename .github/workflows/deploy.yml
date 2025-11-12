@@ -52,7 +52,7 @@ jobs:
             docker run -d --name php-app -p 80:80 \
               -e DB_HOST=${{ secrets.DB_HOST }} \
               -e DB_USER=${{ secrets.DB_USER }} \
-              -e DB_PASS=${{ secrets.DB_NAME }} \
+              -e DB_PASS=${{ secrets.DB_PASS }} \
               -e DB_NAME=${{ secrets.DB_NAME }} \
               ${{ secrets.DOCKER_USERNAME }}/php-app:latest
 
