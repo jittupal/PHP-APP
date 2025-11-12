@@ -50,9 +50,9 @@ jobs:
             docker rm php-app || true
             # Run new container with RDS environment variables
             docker run -d --name php-app -p 80:80 \
-              -e DB_HOST=php-db.ctg6skegio30.eu-north-1.rds.amazonaws.com \
-              -e DB_USER=admin \
-              -e DB_PASS=Jksuperpal91 \
-              -e DB_NAME=formdb \
+              -e DB_HOST=${{ secrets.DB_HOST }} \
+              -e DB_USER=${{ secrets.DB_USER }} \
+              -e DB_PASS=${{ secrets.DB_NAME }} \
+              -e DB_NAME=${{ secrets.DB_NAME }} \
               ${{ secrets.DOCKER_USERNAME }}/php-app:latest
 
